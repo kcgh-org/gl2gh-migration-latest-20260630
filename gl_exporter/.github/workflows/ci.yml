@@ -1,0 +1,35 @@
+---
+name: gl-exporter CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+      - "gh-readonly-queue/**"
+  merge_group:
+
+jobs:
+  ci:
+    name: CI
+    uses: github/internal-actions/.github/workflows/default_simple.yml@main
+    with:
+      ci-formatted-job-name: gl-exporter
+      cibuild-script: script/cibuild
+    secrets:
+      dx-bot-token: ${{ secrets.INTERNAL_ACTIONS_DX_BOT_ACCOUNT_TOKEN }}
+      datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
+
+  golden-image:
+    name: Golden Image
+    uses: github/internal-actions/.github/workflows/golden_image.yml@main
+    with:
+      ci-formatted-job-name: gl-exporter-golden-image
+    secrets:
+      datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
+
+permissions:
+  actions: read
+  checks: read
+  contents: read
+  statuses: read
+  id-token: write
