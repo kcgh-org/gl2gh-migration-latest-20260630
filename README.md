@@ -334,9 +334,9 @@ Configure required reviewers in `approvers-group` to enforce manual approvals.
     - Uploads `migration-status.csv`
 
 11. Post-migration validation
-   - Reads inventory file and validates successfully migrated repositories in GitHub
-   - Validates branch and commit counts by running `gl-post-migration-validation.sh`
-   - Uploads post-validation reports and logs
+    - Reads inventory file and validates successfully migrated repositories in GitHub
+    - Validates branch and commit counts by running `gl-post-migration-validation.sh`
+    - Uploads post-validation reports and logs
 
 12. Preserve artifacts
     - Output files, logs, summaries, and monitoring reports are uploaded as workflow artifacts.
