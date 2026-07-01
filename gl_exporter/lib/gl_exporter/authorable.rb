@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 class GlExporter
   module Authorable
     # Exports a user by name or Hash

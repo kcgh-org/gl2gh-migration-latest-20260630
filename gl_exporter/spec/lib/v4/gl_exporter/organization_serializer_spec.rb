@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-require "spec_helper"
+require 'spec_helper'
 
 describe GlExporter::OrganizationSerializer, :v4 do
   let(:group) do
@@ -14,14 +13,14 @@ describe GlExporter::OrganizationSerializer, :v4 do
 
     it "returns a serialized User hash" do
       expected = {
-        type: "organization",
-        url: "https://gitlab.com/groups/hackmouse",
-        login: "hackmouse",
-        name: "Hack Mouse",
-        description: "",
-        website: nil,
-        location: nil,
-        email: nil,
+        :type        => "organization",
+        :url         => "https://gitlab.com/groups/hackmouse",
+        :login       => "hackmouse",
+        :name        => "Hack Mouse",
+        :description => "",
+        :website     => nil,
+        :location    => nil,
+        :email       => nil,
       }
 
       expected.each do |key, value|

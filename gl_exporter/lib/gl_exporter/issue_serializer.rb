@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 class GlExporter
   # Serializes Issues from GitLab's Issues
   #
@@ -42,20 +41,21 @@ class GlExporter
   # ```
   class IssueSerializer < BaseSerializer
 
+
     # @see GlExporter::BaseSerializer#to_gh_hash
     def to_gh_hash
       {
-        type: "issue",
-        url: url_for_model(gl_model, type: "issue"),
-        repository: repository,
-        user: user,
-        title: title,
-        body: body,
-        assignee: assignee,
-        milestone: milestone,
-        labels: labels,
-        closed_at: closed_at,
-        created_at: created_at
+        :type       => "issue",
+        :url        => url_for_model(gl_model, type: "issue"),
+        :repository => repository,
+        :user       => user,
+        :title      => title,
+        :body       => body,
+        :assignee   => assignee,
+        :milestone  => milestone,
+        :labels     => labels,
+        :closed_at  => closed_at,
+        :created_at => created_at
       }
     end
 

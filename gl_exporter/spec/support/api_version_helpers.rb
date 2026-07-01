@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 module ApiVersionHelpers
   BASE_URL = "https://gitlab.com/api".freeze
 

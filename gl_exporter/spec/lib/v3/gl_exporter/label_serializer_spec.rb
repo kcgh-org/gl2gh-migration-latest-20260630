@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-require "spec_helper"
+require 'spec_helper'
 
 describe GlExporter::LabelSerializer, :v3 do
   let(:label) do
@@ -25,10 +24,10 @@ describe GlExporter::LabelSerializer, :v3 do
 
     it "returns a serialized Repository hash" do
       expected = {
-        type: "label",
-        url: "https://gitlab.com/Mouse-Hack/hugo-pages/labels#/Blocker",
-        name: "Blocker",
-        color: "a295d6"
+        :type => 'label',
+        :url => "https://gitlab.com/Mouse-Hack/hugo-pages/labels#/Blocker",
+        :name => 'Blocker',
+        :color => 'a295d6'
       }
 
       expected.each do |key, value|

@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 require "spec_helper"
 require "gl_exporter/tar_utils"
 require "digest/md5"
@@ -11,7 +10,7 @@ describe GlExporter::ArchiveBuilder, :v4 do
   let(:files) { `tar tfz #{tarball_path}`.split }
 
   def file_md5sum(path)
-    Digest::MD5.file(path).hexdigest # rubocop:disable GitHub/InsecureHashAlgorithm
+    Digest::MD5.file(path).hexdigest
   end
 
   it "makes a tarball with a json file" do
@@ -146,7 +145,7 @@ describe GlExporter::ArchiveBuilder, :v4 do
         end
 
         it "raises SSL errors" do
-          expect {
+          expect{
             archive_builder.save_attachment("tmp/test.png", "https://self-signed.badssl.com/")
           }.to raise_error(Faraday::SSLError)
         end

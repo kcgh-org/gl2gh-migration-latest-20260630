@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 module Faraday
   class CacheHeaders < Faraday::Response::Middleware
     # A little hack middleware to manually set cache headers. GitLab by default

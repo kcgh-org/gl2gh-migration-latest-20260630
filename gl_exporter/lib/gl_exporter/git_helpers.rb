@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 # Why yes, yes this is shamefully stolen from gh-migrator
 
 class GlExporter

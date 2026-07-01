@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 class GlExporter
   # Serializes Protected Branches from GitLab repositories
   #

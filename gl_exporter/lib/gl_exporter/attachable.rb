@@ -1,7 +1,6 @@
-# frozen_string_literal: true
 class GlExporter
   module Attachable
-    ATTACHMENT_REGEX = /\[(?<link_text>[^\]\n\r]*?)\]\((?<attach_path>\/uploads\/[^)\s]+?)\)/
+    ATTACHMENT_REGEX= /\[(?<link_text>[^\]\n\r]*?)\]\((?<attach_path>\/uploads\/[^)\s]+?)\)/
 
     def model_url_service
       @model_url_service ||= ModelUrlService.new
@@ -25,7 +24,7 @@ class GlExporter
         }
         attach_url = model_url_service.url_for_model(tmp_model, type: "attachment")
         parent_url = model_url_service.url_for_model(model, type: type)
-
+        
         begin
           next unless archiver.save_attachment(attach_path, attach_url, parent_url)
           serialize("attachment", tmp_model)
@@ -36,14 +35,14 @@ class GlExporter
             model_identifier = model["iid"] || model["id"] || "unknown"
             model_title = model["title"] || model["name"] || "untitled"
             project_name = project["path_with_namespace"] || project["name"] || "unknown project"
-
+            
             error_context = "Failed to extract attachment in #{type} ##{model_identifier} ('#{model_title}') " \
                           "in project '#{project_name}'. " \
                           "Attachment path: '#{attach_path}', " \
                           "Generated URL: '#{attach_url}'. " \
                           "Error: #{e.message}. " \
                           "You might want to fix the attachment reference at the source and then run the export again."
-
+            
             [current_export.logger, current_export.output_logger].each do |logger|
               logger.error error_context
             end

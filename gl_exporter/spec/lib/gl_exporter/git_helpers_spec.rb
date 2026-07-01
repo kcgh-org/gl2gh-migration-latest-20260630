@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 require "spec_helper"
 
 class GlExporter
@@ -46,10 +45,10 @@ class GlExporter
       end
 
       it "sets up all refs" do
-        helper.archive_repo(
-         clone_url: "./spec/fixtures/repositories/Mouse-Hack/hugo-pages.git",
-         to: "tmp/hugo-pages.git"
-       )
+         helper.archive_repo(
+          clone_url: "./spec/fixtures/repositories/Mouse-Hack/hugo-pages.git",
+          to: "tmp/hugo-pages.git"
+        )
 
         cloned_repo = Rugged::Repository.discover("tmp/hugo-pages.git")
 

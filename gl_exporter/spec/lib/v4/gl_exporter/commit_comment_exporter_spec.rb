@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 require "spec_helper"
 
 describe GlExporter::CommitCommentExporter, :v4 do

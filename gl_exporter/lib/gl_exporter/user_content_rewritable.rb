@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 class GlExporter
   module UserContentRewritable
     ISSUE_MR_REGEX = /([^\w])([#|!])(\d+)/

@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 class GlExporter
   class IssueExporter
     include UserContentRewritable
@@ -21,6 +20,7 @@ class GlExporter
       issue["assignee"] && export_user(issue["assignee"]["username"])
       prepare_issue_notes_for_export(issue)
     end
+
 
     # Alias for `issue`
     #

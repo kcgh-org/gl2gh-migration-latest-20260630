@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 require "spec_helper"
 
 describe GlExporter::MergeRequestExporter, :v3 do
@@ -80,7 +79,7 @@ describe GlExporter::MergeRequestExporter, :v3 do
     # The example merge_request has a beginning merge_request id of `476834`
 
     it "changes the id of the attached merge_request" do
-      expect { merge_request_exporter.renumber!(27) }.to change { merge_request[Gitlab.issue_id_key] }
+      expect{merge_request_exporter.renumber!(27)}.to change{merge_request[Gitlab.issue_id_key]}
         .from(476834).to(27)
     end
 
@@ -146,7 +145,7 @@ describe GlExporter::MergeRequestExporter, :v3 do
     end
 
     it "does not raise an unhandled error" do
-      expect { merge_request_exporter.export }.to_not raise_error
+      expect{merge_request_exporter.export}.to_not raise_error
     end
 
     it "serializes the merge request as an issue" do

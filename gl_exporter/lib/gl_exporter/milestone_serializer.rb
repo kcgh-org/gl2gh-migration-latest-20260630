@@ -1,4 +1,3 @@
-# frozen_string_literal: true
 class GlExporter
 
   # Serializes Milestones from GitLab's Milestones
@@ -39,15 +38,15 @@ class GlExporter
     # @see GlExporter::BaseSerializer#to_gh_hash
     def to_gh_hash
       {
-        type: "milestone",
-        url: url_for_model(gl_model, type: "milestone"),
-        repository: repository,
-        user: user,
-        title: title,
-        description: description,
-        state: state,
-        due_on: due_on,
-        created_at: created_at,
+        :type => "milestone",
+        :url => url_for_model(gl_model, type: "milestone"),
+        :repository => repository,
+        :user => user,
+        :title => title,
+        :description => description,
+        :state => state,
+        :due_on => due_on,
+        :created_at => created_at,
       }
     end
 

@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-require "spec_helper"
+require 'spec_helper'
 
 describe GlExporter::MemberSerializer, :v3 do
   let(:member) do
@@ -14,9 +13,9 @@ describe GlExporter::MemberSerializer, :v3 do
 
     it "returns a serialized User hash" do
       expected = {
-        user: "https://gitlab.com/spraints",
-        role: "direct_member",
-        state: "active"
+        :user => "https://gitlab.com/spraints",
+        :role => "direct_member",
+        :state => "active"
       }
 
       expected.each do |key, value|
