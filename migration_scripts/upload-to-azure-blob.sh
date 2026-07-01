@@ -152,7 +152,7 @@ upload_archive_to_azure_blob() {
   echo "PRESIGNED_URL=${PRESIGNED_URL}"
   echo "Archive Upload URL: ${PRESIGNED_URL}"
   echo "PRESIGNED_URL=$PRESIGNED_URL" >>"$GITHUB_ENV"
-
+}
 main() {
   get_org_id "$GH_ORG" "$GH_PAT"
   upload_archive_to_azure_blob "$ORG_ID" "$TARGET_GH_REPO"
