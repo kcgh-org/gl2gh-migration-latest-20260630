@@ -1084,16 +1084,7 @@ jobs:
           name: start-repository-migration-artifacts
           path: .
   
-      # ✅ Auth
-      - name: Authenticate GitHub CLI
-        shell: bash
-        run: |
-          set -euo pipefail
-          unset GH_TOKEN
-          echo "$GH_PAT" | gh auth login --with-token --hostname "$GH_HOST"
-          gh auth status
-  
-      # ✅ Install extension (CRITICAL)
+      # ✅ Install GH CLI extension
       - name: Install gh-ado2gh extension
         shell: bash
         run: |
