@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class GlExporter
   # @todo Update to use UrlTemplates.
   class ModelUrlService
@@ -10,7 +11,7 @@ class GlExporter
     # @option opts [String] :type the type of model being passed in; uses GitHub
     #   naming conventions
     # @return [String] the url for the model
-    def url_for_model(model, opts={})
+    def url_for_model(model, opts = {})
       return unless model
 
       case opts[:type]
@@ -58,7 +59,7 @@ class GlExporter
 
     # Sometimes GitLab doesn't send over IDs for resources, so we make them up
     def fake_id(model)
-      md5 = Digest::MD5.new
+      md5 = Digest::MD5.new # rubocop:disable GitHub/InsecureHashAlgorithm
       md5 << model.to_s
       md5.hexdigest
     end

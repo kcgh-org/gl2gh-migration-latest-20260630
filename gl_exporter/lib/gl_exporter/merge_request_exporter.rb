@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class GlExporter
   class MergeRequestExporter
     include UserContentRewritable
@@ -35,7 +36,6 @@ class GlExporter
       merge_request["assignee"] && export_user(merge_request["assignee"]["username"])
       prepare_merge_request_notes_for_export(merge_request)
     end
-
 
     # Alias for `merge_request`
     #

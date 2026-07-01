@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class GlExporter
   class CommitCommentExporter
     include UserContentRewritable
@@ -60,7 +61,7 @@ class GlExporter
     def normalize_commit_comment(raw)
       return raw if raw.is_a?(Hash)
       return JSON.parse(raw) if raw.is_a?(String)
-      
+
       logger.error "Commit comment not JSON; surfacing comment #{raw}"
       raise ArgumentError, "Commit comment not JSON: #{raw}"
     rescue JSON::ParserError

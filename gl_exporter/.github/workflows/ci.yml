@@ -27,6 +27,19 @@ jobs:
     secrets:
       datadog-api-key: ${{ secrets.DATADOG_API_KEY }}
 
+  rubocop:
+    name: RuboCop
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_FROZEN: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Run RuboCop
+        run: bundle exec rubocop --cache false --format github
+
 permissions:
   actions: read
   checks: read

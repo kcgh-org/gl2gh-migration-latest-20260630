@@ -1,4 +1,5 @@
-require 'spec_helper'
+# frozen_string_literal: true
+require "spec_helper"
 
 describe GlExporter::CommitCommentSerializer, :v4 do
   let(:commit) do
@@ -29,16 +30,16 @@ describe GlExporter::CommitCommentSerializer, :v4 do
 
     it "returns a serialized Issue hash" do
       expected = {
-        :type       => "commit_comment",
-        :url        => "https://gitlab.com/Mouse-Hack/hugo-pages/commit/220d5dc2582a49d694c503abdb8cf25bcdd81dce#note_10b658e747cf610dd8519662f1b0a763",
-        :repository => "https://gitlab.com/Mouse-Hack/hugo-pages",
-        :user       => "https://gitlab.com/lizzhale",
-        :body       => "is this necessary?\r\n\r\n[testFile.txt](/uploads/af7fcacfc5d69fdcf63a8f04048a106f/testFile.txt)\r\n\r\n\r\n\r\n",
-        :formatter  => "markdown",
-        :path       => "Brewfile",
-        :position   => 5,
-        :commit_id  => "220d5dc2582a49d694c503abdb8cf25bcdd81dce",
-        :created_at => "2016-05-10T22:23:50.501Z"
+        type: "commit_comment",
+        url: "https://gitlab.com/Mouse-Hack/hugo-pages/commit/220d5dc2582a49d694c503abdb8cf25bcdd81dce#note_10b658e747cf610dd8519662f1b0a763",
+        repository: "https://gitlab.com/Mouse-Hack/hugo-pages",
+        user: "https://gitlab.com/lizzhale",
+        body: "is this necessary?\r\n\r\n[testFile.txt](/uploads/af7fcacfc5d69fdcf63a8f04048a106f/testFile.txt)\r\n\r\n\r\n\r\n",
+        formatter: "markdown",
+        path: "Brewfile",
+        position: 5,
+        commit_id: "220d5dc2582a49d694c503abdb8cf25bcdd81dce",
+        created_at: "2016-05-10T22:23:50.501Z"
       }
 
       expected.each do |key, value|

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class GlExporter
   module Writable
     # A mapping of models to their serializers
@@ -28,7 +29,7 @@ class GlExporter
     #   not serialized again
     def serialize(model_name, model)
       serializer = Serializers[model_name].new({
-        :model_url_service => model_url_service
+        model_url_service: model_url_service
       })
       model_url = model_url_service.url_for_model(model, type: model_name)
       if !model_url

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class GlExporter
 
   # Serializes Attachments from a temporary model
@@ -58,7 +59,7 @@ class GlExporter
       u = url
 
       begin
-        Gitlab.connection.head(u, private_token: token)['Content-Type']
+        Gitlab.connection.head(u, private_token: token)["Content-Type"]
       rescue URI::InvalidURIError => e
         if e.message[/^URI must be ascii only/]
           u = Addressable::URI.encode(u)
