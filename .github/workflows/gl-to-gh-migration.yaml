@@ -1098,6 +1098,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          unset GH_TOKEN
+          echo "$GH_PAT" | gh auth login --with-token --hostname "$GH_HOST"
+          gh auth status
           gh extension install https://github.com/github/gh-ado2gh || \
           gh extension upgrade gh-ado2gh
           gh extension list
