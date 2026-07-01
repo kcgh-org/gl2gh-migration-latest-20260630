@@ -216,6 +216,14 @@ jobs:
           echo "npm Version    : $(npm --version)"
           echo "GH CLI Version : $(gh --version | head -n1)"
 
+          if [[ "$STORAGE_TYPE" == "AZURE" ]]; then
+              command -v az >/dev/null 2>&1 || {
+                  echo "[ERROR] Azure CLI (az) is required for STORAGE_TYPE=AZURE"
+                  exit 1
+              }
+              echo "[INFO] Azure CLI detected: $(az version | jq -r '."azure-cli"')"
+          fi
+          
           printf '\n'
           echo "[INFO] Listing npm packages..."
           npm list @octokit/rest @octokit/graphql || true
