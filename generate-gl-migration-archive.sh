@@ -49,6 +49,8 @@ fi
 if ! $DOCKER_CMD image inspect "$GL_EXPORTER_IMAGE" >/dev/null 2>&1; then
     echo "[ERROR] $GL_EXPORTER_IMAGE not found"
     exit 1
+else
+    echo "[INFO] gl-exporter version: $(docker run --rm "$GL_EXPORTER_IMAGE" gl_exporter --version)"
 fi
 
 # --- Helpers ---# String for filenames: - replace / or \ and spaces with underscores
