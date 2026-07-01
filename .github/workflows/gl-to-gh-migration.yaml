@@ -336,7 +336,7 @@ jobs:
 
           # Validate GITHUB_TYPE input
           if [[ "$GITHUB_TYPE" == "GitHub" ]]; then
-            echo "[INFO] GITHUB_TYPE=$GITHUB_TYPE"
+            echo "[INFO] GITHUB_TYPE: $GITHUB_TYPE"
           elif [[ "$GITHUB_TYPE" == "GitHubDR" ]]; then
             echo "[INFO] GITHUB_TYPE: $GITHUB_TYPE"
           else
