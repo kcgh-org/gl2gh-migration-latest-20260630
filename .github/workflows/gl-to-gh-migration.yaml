@@ -223,6 +223,15 @@ jobs:
               }
               echo "[INFO] Azure CLI detected: $(az version | jq -r '."azure-cli"')"
           fi
+
+          if [[ "$STORAGE_TYPE" == "AWS" ]]; then
+              command -v aws >/dev/null 2>&1 || {
+                  echo "[ERROR] AWS CLI (aws) is required for STORAGE_TYPE=AWS"
+                  exit 1
+              }
+          
+              echo "[INFO] AWS CLI detected: $(aws --version)"
+          fi
           
           printf '\n'
           echo "[INFO] Listing npm packages..."
@@ -329,7 +338,7 @@ jobs:
           if [[ "$GITHUB_TYPE" == "GitHub" ]]; then
             echo "[INFO] GITHUB_TYPE=$GITHUB_TYPE"
           elif [[ "$GITHUB_TYPE" == "GitHubDR" ]]; then
-            echo "[INFO] GITHUB_TYPE=$GITHUB_TYPE"
+            echo "[INFO] GITHUB_TYPE: $GITHUB_TYPE"
           else
             echo "[ERROR] Invalid GITHUB_TYPE: $GITHUB_TYPE"
             echo "Allowed values: GitHub or GitHubDR"
