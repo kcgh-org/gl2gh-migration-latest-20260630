@@ -181,7 +181,7 @@ while IFS= read -r raw; do
     pr="$(echo "${flds[$PR_IDX]:-}" | xargs)"
     github_org="$(echo "${flds[$GH_ORG_IDX]:-}" | xargs)"
     github_repo="$(echo "${flds[$GH_REPO_IDX]:-}" | xargs)"
-    gh_repo_visibility="$(echo "${flds[$GH_REPO_VISIBILITY]:-}" | xargs)" 
+    gh_repo_visibility="$(echo "${flds[$GH_REPO_VISIBILITY]:-}" | xargs)"
     full_url="$(echo "${flds[$FULL_URL_IDX]:-}" | xargs)"
 
     include_in_export=""
@@ -197,12 +197,12 @@ while IFS= read -r raw; do
 
     total=$((total + 1))   # Increment total rows processed.
 
-    [[ -z "$ns" || -z "$pr" || -z "$github_org" || -z "$github_repo"  || -z "$gh_repo_visibility" || -z "$full_url" ]] && skipped=$((skipped+1)) && echo "[WARN] Row: ${total} - Skipping due to missing required fields: gitlab_group='${ns}' gitlab_project='${pr}' Full_URL='${full_url}' github_org='${github_org}' github_repo='${github_repo}' gh_repo_visibility='$gh_repo_visibility'" && continue   # Skip rows that don’t have both Namespace, Project, GitHub Org and GitHub Repo.
+    [[ -z "$ns" || -z "$pr" || -z "$github_org" || -z "$github_repo"  || -z "$gh_repo_visibility" || -z "$full_url" ]] && skipped=$((skipped+1)) && echo "" && echo "[WARN] Row: ${total} - Skipping due to missing required fields: gitlab_group='${ns}' gitlab_project='${pr}' Full_URL='${full_url}' github_org='${github_org}' github_repo='${github_repo}' gh_repo_visibility='$gh_repo_visibility'" && continue   # Skip rows that don’t have both Namespace, Project, GitHub Org and GitHub Repo.
 
     if [[ "$gh_repo_visibility" != "private" && "$gh_repo_visibility" != "public" && "$gh_repo_visibility" != "internal" ]]; then
-       echo "[ERROR] Invalid gh_repo_visibility: '$gh_repo_visibility'"
+       echo ""
+       echo "[ERROR] Row: ${total} - Invalid gh_repo_visibility '$gh_repo_visibility' for project '$ns/$pr'"
        echo "[ERROR] Valid values: private, public, internal"
-       
        fail=$((fail + 1))
        failed+=("$ns/$pr")
        continue
@@ -241,15 +241,15 @@ while IFS= read -r raw; do
     # Resolve correct GitLab project slug from Full_URL
     clean_url="${full_url%%\?*}"
     clean_url="${clean_url%.git}"
-    
+
     path_part="$(echo "$clean_url" | sed -E 's#https?://[^/]+/##')"
-    
+
     resolved_ns="$(dirname "$path_part")"
     resolved_pr="$(basename "$path_part")"
-    
+
     echo "[INFO] Resolved namespace: '$ns' -> '$resolved_ns'"
     echo "[INFO] Resolved project : '$pr' -> '$resolved_pr'"
-    
+
     ns="$resolved_ns"
     pr="$resolved_pr"
 
