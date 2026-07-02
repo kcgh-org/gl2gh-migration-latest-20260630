@@ -229,21 +229,25 @@ while IFS= read -r raw; do
   total=$((total + 1))
 
   # Skip if missing
-  if [[ -z "$ns" || -z "$pr" ]]; then
-    skipped=$((skipped + 1))
-    echo "[WARN] Row: $total - Skipping due to missing values: GitLab group='$ns' GitLab Project='$pr'"
-    continue
+  if [[ -z "$ns" || -z "$pr" || -z "$full_url" ]]; then
+      skipped=$((skipped + 1))
+      echo "[WARN] Row: $total - Skipping due to missing values: GitLab group='$ns' GitLab Project='$pr' Full_URL='$full_url'"
+      continue
   fi
 
-  if [[ -n "$full_url" ]]; then
-    resolved_pr="$(basename "${full_url%%\?*}")"
-    resolved_pr="${resolved_pr%.git}"
-
-    if [[ "$pr" == *" "* && -n "$resolved_pr" ]]; then
-        echo "[INFO] Resolved project name: '$pr' -> '$resolved_pr'"
-        pr="$resolved_pr"
-    fi
-  fi
+  clean_url="${full_url%%\?*}"
+  clean_url="${clean_url%.git}"
+  
+  path_part="$(echo "$clean_url" | sed -E 's#https?://[^/]+/##')"
+  
+  resolved_ns="$(dirname "$path_part")"
+  resolved_pr="$(basename "$path_part")"
+  
+  echo "[INFO] Resolved namespace: '$ns' -> '$resolved_ns'"
+  echo "[INFO] Resolved project : '$pr' -> '$resolved_pr'"
+  
+  ns="$resolved_ns"
+  pr="$resolved_pr"
 
   project_path="$ns/$pr"
   enc_project="$(urlencode "$project_path")"
