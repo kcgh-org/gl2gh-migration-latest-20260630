@@ -1,2 +1,2 @@
 Namespace,Project,Commit_Count,Branch_Count,Full_URL,github_org,github_repo,gh_repo_visibility
-migration-demo-group,AI-Chatbot,13,2,http://gitlabpoc.eastus.cloudapp.azure.com/migration-demo-group/AI-Chatbot,my-org,AI-Chatbot-01july-9a,private
+my group 2,my project 2,13,2,http://gitlabpoc.eastus.cloudapp.azure.com/my-group-2/my-project-2,my-org,project2-2aa,private
