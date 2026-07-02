@@ -202,7 +202,10 @@ while IFS= read -r raw; do
     if [[ "$gh_repo_visibility" != "private" && "$gh_repo_visibility" != "public" && "$gh_repo_visibility" != "internal" ]]; then
        echo "[ERROR] Invalid gh_repo_visibility: '$gh_repo_visibility'"
        echo "[ERROR] Valid values: private, public, internal"
-       exit 1
+       
+       fail=$((fail + 1))
+       failed+=("$ns/$pr")
+       continue
     fi
 
     GL_EXPORTER_ARGS=""
