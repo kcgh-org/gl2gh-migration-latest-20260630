@@ -1,2 +1,3 @@
-Namespace,Project,Commit_Count,Branch_Count,Full_URL,github_org,github_repo,gh_repo_visibility
-my group 2,my project 2,13,2,http://gitlabpoc.eastus.cloudapp.azure.com/my-group-2/my-project-2,my-org,project2-2aa,private
+Namespace,Project,Is_Empty,isFork,isArchive,Project_Size(mb),LFS_Size(mb),Collaborator_Count,Protected_Branch_Count,MR_Review_Count,Milestone_Count,Issue_Count,MR_Count,MR_Review_Comment_Count,Commit_Count,Issue_Comment_Count,Release_Count,Branch_Count,Tag_Count,Has_Wiki,Full_URL,Created,Last_Push,Last_Update,github_org,github_repo,gh_repo_visibilitymy group 2,my project 2,13,2,http://gitlabpoc.eastus.cloudapp.azure.com/my-group-2/my-project-2,my-org,project2-2aa,private
+
+my-group-2,my project 2,false,false,false,0,0,1,1,0,0,0,0,0,1,0,0,1,0,false,http://gitlabpoc.eastus.cloudapp.azure.com/my-group-2/my-project-2,2026-07-02T06:16:16Z,2026-07-02T06:16:16Z,2026-07-02T06:16:16Z,my-org,my-proj-kc-july2-2a,private
